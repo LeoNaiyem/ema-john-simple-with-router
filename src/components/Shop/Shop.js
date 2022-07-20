@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
-import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import './Shop.css';
 
 const Shop = () => {
@@ -36,7 +37,18 @@ const Shop = () => {
     }, [products])
 
     const handleAddToCart = (product) => {
-        const newCart = [...cart, product];
+        let newCart = [];
+        const exists = cart.find(pd => pd.key === product.key);
+        if (exists) {
+            const remaining = cart.filter(pd => pd.key !== product.key);
+            product.quantity = product.quantity + 1;
+            newCart = [...remaining, product];
+        } else {
+            product.quantity = 1;
+            newCart = [...cart, product];
+        }
+
+        // const newCart = [...cart, product];
         setCart(newCart);
         // save to local storage (for now)
         addToDb(product.key);
@@ -70,7 +82,9 @@ const Shop = () => {
                     }
                 </div>
                 <div className="cart-container">
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart}>
+                        <button className="btn-regular"><NavLink className="link" to ='/orders' >Review Order</NavLink></button>
+                    </Cart>
                 </div>
             </div>
         </>
