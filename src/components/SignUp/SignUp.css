@@ -1,0 +1,32 @@
+.signUp-container {
+  display: flex;
+  min-height: 80vh;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+.singUp-form h1 {
+  text-decoration: underline;
+  color: #0c53ed;
+}
+.singUp-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  line-height: 20px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #0c53ed;
+}
+.singUp-form input[type="submit"] {
+  background-color: #0c53ed;
+  width: 40%;
+  text-align: center;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.singUp-form span {
+  color: red;
+}

@@ -18,9 +18,9 @@ const OrderReview = () => {
     }
 
     const handlePlaceOrder = () =>{
-        navigate('/placeorder');
         setCart([]);
         clearTheCart();
+        navigate('/shipping');
     }
     return (
         <div className = "shop-container">
@@ -39,7 +39,7 @@ const OrderReview = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart} >
-                    <button onClick={handlePlaceOrder} className="btn-regular"> Place Order</button>
+                    <button onClick={handlePlaceOrder} className="btn-regular">Proceed To Shipping</button>
                 </Cart>
             </div>
         </div>

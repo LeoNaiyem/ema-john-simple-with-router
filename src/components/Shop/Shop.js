@@ -42,7 +42,7 @@ const Shop = () => {
         if (exists) {
             const remaining = cart.filter(pd => pd.key !== product.key);
             product.quantity = product.quantity + 1;
-            newCart = [...remaining, product];
+            newCart = [...remaining, exists];
         } else {
             product.quantity = 1;
             newCart = [...cart, product];
